@@ -24,7 +24,7 @@ export default function PostCard({ post }: PostCardProps) {
       {/* Content Container */}
       <div className="flex h-full flex-col p-5">
         {/* Author Row - Avatar + Name + Date (Small text, Gray) - Above Title */}
-        <div className="flex items-center gap-2">
+        <div className="mb-3 flex items-center gap-2">
           <div className="h-8 w-8 overflow-hidden rounded-full bg-gray-300">
             <Image
               src={post.author.avatarUrl}
@@ -34,8 +34,8 @@ export default function PostCard({ post }: PostCardProps) {
               className="object-cover"
             />
           </div>
-          <div className="flex items-center gap-2 text-sm text-gray-500">
-            <span className="font-medium">{post.author.name}</span>
+          <div className="flex items-center gap-2 text-sm font-medium text-gray-500">
+            <span>{post.author.name}</span>
             <span>•</span>
             <span>
               {new Date(post.publishedAt).toLocaleDateString("en-US", {
@@ -48,13 +48,13 @@ export default function PostCard({ post }: PostCardProps) {
 
         {/* Title - Bold, Black, Sans-serif */}
         <Link href={`/blog/${post.slug}`}>
-          <h3 className="mt-3 text-xl font-bold leading-tight text-gray-900 transition-colors duration-300 hover:text-orange-600">
+          <h3 className="text-xl font-bold leading-snug tracking-tight text-gray-900 transition-colors duration-300 group-hover:text-[#E6602F]">
             {post.title}
           </h3>
         </Link>
 
         {/* Excerpt - Gray text, line-clamp-2 */}
-        <p className="mt-2 line-clamp-2 text-sm text-gray-600">{post.excerpt}</p>
+        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-gray-600">{post.excerpt}</p>
 
         {/* Tags - At the very bottom */}
         <div className="mt-auto flex flex-wrap gap-2 pt-4">

@@ -12,7 +12,7 @@ export default function Home() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Featured Story Section */}
         <section className="mb-16">
-          <h1 className="mb-8 font-serif text-4xl font-bold text-orange-600">
+          <h1 className="mb-8 text-4xl font-bold tracking-tight text-[#D9622B]">
             Featured Story
           </h1>
           <FeaturedCard post={featuredPost} />
@@ -20,7 +20,7 @@ export default function Home() {
 
         {/* Recently Published Section */}
         <section className="mb-12">
-          <h2 className="mb-8 font-serif text-3xl font-bold text-orange-600">
+          <h2 className="mb-8 text-3xl font-bold tracking-tight text-[#D9622B]">
             Recently Published
           </h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">

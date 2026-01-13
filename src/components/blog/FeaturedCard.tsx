@@ -35,7 +35,7 @@ export default function FeaturedCard({ post }: FeaturedCardProps) {
 
           {/* Author Name + Avatar - Right */}
           <div className="flex items-center gap-2">
-            <p className="text-sm font-medium text-gray-900">
+            <p className="font-medium text-gray-900">
               {post.author.name}
             </p>
             <div className="h-8 w-8 overflow-hidden rounded-full bg-gray-300">
@@ -50,15 +50,15 @@ export default function FeaturedCard({ post }: FeaturedCardProps) {
           </div>
         </div>
 
-        {/* Row 2: Title - Large, Serif, Orange-600 */}
+        {/* Row 2: Title - Large, Sans-Serif, Orange */}
         <Link href={`/blog/${post.slug}`}>
-          <h2 className="mt-6 font-serif text-3xl font-bold text-orange-600 transition-colors duration-300 hover:text-orange-700">
+          <h2 className="mb-3 mt-6 text-3xl font-bold tracking-tight text-[#D9622B] transition-colors duration-300 hover:text-[#C8501F] md:text-4xl">
             {post.title}
           </h2>
         </Link>
 
         {/* Row 3: Excerpt - Gray */}
-        <p className="mt-3 text-gray-600">{post.excerpt}</p>
+        <p className="mb-6 text-lg leading-relaxed text-gray-600">{post.excerpt}</p>
 
         {/* Row 4: Footer - Date/Time (Left) | Read more (Right) */}
         <div className="mt-6 flex items-center justify-between">
@@ -107,7 +107,7 @@ export default function FeaturedCard({ post }: FeaturedCardProps) {
           {/* Read more Link - Right, Orange */}
           <Link
             href={`/blog/${post.slug}`}
-            className="flex items-center gap-2 font-semibold text-orange-600 transition-colors hover:text-orange-700"
+            className="flex items-center gap-2 font-semibold text-[#E6602F] transition-colors hover:text-[#C8501F]"
           >
             Read more
             <svg
