@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     "Learn about the SLIIT Mozilla Club, our mission, and the community behind the SLIIT Mozilla Blog.",
 };
 
-function CornerBox({ children }: { children: React.ReactNode }) {
+function CornerBox({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div className="relative rounded-xl border border-[#D9622B] bg-white p-8 text-center shadow-sm">
       {/* corner accents */}
