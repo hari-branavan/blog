@@ -5,8 +5,12 @@ import { getAllPosts } from "@/lib/posts";
 
 export default function Home() {
   const posts = getAllPosts();
-  const featuredPost = posts[0];
-  const recentPosts = posts.slice(1);
+  const featuredPost = posts.find((post) => post.featuredImage);
+  const recentPosts = posts.filter(
+    (post) =>
+      post.cardImage &&
+      post.id !== featuredPost?.id
+  ).slice(0, 4);
 
   return (
     <div className="min-h-screen bg-gray-50">

@@ -15,18 +15,20 @@ export default function FeaturedCard({ post }: Readonly<FeaturedCardProps>) {
       {/* 1. White Border Frame: Created by 'p-5' 
           This pushes the image in, creating the frame effect.
       */}
-      <div className="relative w-full p-5">
-        <div className="relative aspect-[2.4/1] w-full overflow-hidden rounded-xl"> 
-          {/* rounded-xl here matches the inner rounding of the design */}
-          <Image
-            src={post.featuredImage}
-            alt={post.title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-            priority
-          />
+      {post.featuredImage && (
+        <div className="relative w-full p-5">
+          <div className="relative aspect-[2.4/1] w-full overflow-hidden rounded-xl"> 
+            {/* rounded-xl here matches the inner rounding of the design */}
+            <Image
+              src={post.featuredImage}
+              alt={post.title}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              priority
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Content Container: 
           'px-5' matches the 'p-5' above to ensure the tag and title 
@@ -49,15 +51,17 @@ export default function FeaturedCard({ post }: Readonly<FeaturedCardProps>) {
             <p className="text-sm font-medium text-gray-700">
               {post.author.name}
             </p>
-            <div className="h-7 w-7 overflow-hidden rounded-full border border-gray-100">
-              <Image
-                src={post.author.avatarUrl}
-                alt={post.author.name}
-                width={28}
-                height={28}
-                className="object-cover"
-              />
-            </div>
+            {post.author.avatarUrl && (
+              <div className="h-7 w-7 overflow-hidden rounded-full border border-gray-100">
+                <Image
+                  src={post.author.avatarUrl}
+                  alt={post.author.name}
+                  width={28}
+                  height={28}
+                  className="object-cover"
+                />
+              </div>
+            )}
           </div>
         </div>
 

@@ -3,7 +3,8 @@ import PostsContent from './posts-content';
 import { getAllPosts } from '@/lib/posts';
 
 export default function PostsPage() {
-  const posts = getAllPosts();
+  const allPosts = getAllPosts();
+  const posts = allPosts.filter((post) => post.cardImage);
 
   return (
     <main className="min-h-screen bg-gray-50 py-12">

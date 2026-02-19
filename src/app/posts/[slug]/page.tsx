@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 import Badge from "@/components/ui/Badge";
 
@@ -75,7 +76,14 @@ export default async function PostPage({ params }: PostPageProps) {
             </div>
 
             <div className="article-content mt-8">
-              <MDXRemote source={post.content} />
+              <MDXRemote
+                source={post.content}
+                options={{
+                  mdxOptions: {
+                    remarkPlugins: [remarkGfm],
+                  },
+                }}
+              />
             </div>
           </div>
         </div>

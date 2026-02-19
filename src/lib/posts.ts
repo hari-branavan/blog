@@ -9,14 +9,35 @@ export interface BlogPostWithContent extends BlogPost {
 
 const POSTS_DIR = path.join(process.cwd(), "content", "posts");
 
+function normalizeImageValue(value: unknown) {
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return "";
+  }
+
+  if (trimmed.toLowerCase() === "no") {
+    return "";
+  }
+
+  return trimmed;
+}
+
 function readPostFile(slug: string) {
   const fullPath = path.join(POSTS_DIR, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const coverImage = String(data.coverImage ?? data.featuredImage ?? data.cardImage ?? "/images/placeholder.png");
-  const cardImage = String(data.cardImage ?? coverImage);
-  const featuredImage = String(data.featuredImage ?? coverImage);
+  const rawCoverImage = normalizeImageValue(data.coverImage);
+  const rawCardImage = normalizeImageValue(data.cardImage);
+  const rawFeaturedImage = normalizeImageValue(data.featuredImage);
+
+  const coverImage = rawCoverImage || rawCardImage || "/images/placeholder.png";
+  const cardImage = rawCardImage;
+  const featuredImage = rawFeaturedImage;
 
   const post: BlogPost = {
     id: String(data.id ?? slug),
