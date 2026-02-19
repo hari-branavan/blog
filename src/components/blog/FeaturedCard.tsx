@@ -5,10 +5,10 @@ import { BlogPost } from "@/types/blog";
 import Badge from "@/components/ui/Badge";
 
 interface FeaturedCardProps {
-  post: BlogPost;
+  post: Readonly<BlogPost>;
 }
 
-export default function FeaturedCard({ post }: FeaturedCardProps) {
+export default function FeaturedCard({ post }: Readonly<FeaturedCardProps>) {
   return (
     <article className="group overflow-hidden rounded-2xl bg-white shadow-sm transition-shadow duration-300 hover:shadow-md border border-gray-100">
       
@@ -19,7 +19,7 @@ export default function FeaturedCard({ post }: FeaturedCardProps) {
         <div className="relative aspect-[2.4/1] w-full overflow-hidden rounded-xl"> 
           {/* rounded-xl here matches the inner rounding of the design */}
           <Image
-            src={post.coverImage}
+            src={post.featuredImage}
             alt={post.title}
             fill
             className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -62,7 +62,7 @@ export default function FeaturedCard({ post }: FeaturedCardProps) {
         </div>
 
         {/* Row 2: Title */}
-        <Link href={`/blog/${post.slug}`}>
+        <Link href={`/posts/${post.slug}`}>
           <h2 className="mb-3 text-2xl font-bold tracking-tight text-[#D45D29] transition-colors duration-300 hover:text-[#B34B1E] md:text-3xl">
             {post.title}
           </h2>
@@ -91,7 +91,7 @@ export default function FeaturedCard({ post }: FeaturedCardProps) {
           </div>
 
           <Link
-            href={`/blog/${post.slug}`}
+            href={`/posts/${post.slug}`}
             className="flex items-center gap-1 text-sm font-bold text-[#D45D29] transition-colors hover:text-[#B34B1E]"
           >
             Read more
